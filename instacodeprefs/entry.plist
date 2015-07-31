@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = InstaCodePrefs;
+	cell = PSLinkCell;
+	detail = InstaCodePrefsListController;
+	icon = InstaCodePrefs.png;
+	isController = 1;
+	label = InstaCode;
+    };
+}

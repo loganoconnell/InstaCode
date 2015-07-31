@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+	    	<key>cell</key>				<string>PSGroupCell</string>
+	    	<key>footerCellClass</key>	<string>InstaCodeCustomCell</string>
+		</dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <true/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>enabled</string>
+            <key>label</key>            <string>Enabled</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+	    	<key>cell</key>				<string>PSGroupCell</string>
+	    	<key>label</key>			<string>Settings</string>
+			<key>footerAlignment</key>	<integer>1</integer>
+		</dict>
+
+		<dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <true/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideCancelButton</string>
+            <key>label</key>            <string>Hide Cancel Button</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <true/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideDeleteButton</string>
+            <key>label</key>            <string>Hide Delete Button</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <true/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideEmergencyButton</string>
+            <key>label</key>            <string>Hide Emergency Button</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+	    	<key>cell</key>				<string>PSGroupCell</string>
+			<key>footerText</key>		<string>Add the Delete and Emergency buttons to the passcode view.</string>
+			<key>footerAlignment</key>	<integer>1</integer>
+		</dict>
+
+		 <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <true/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>addPasscodeButtons</string>
+            <key>label</key>            <string>Add Passcode Buttons</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+            <key>footerText</key>       <string>Hide the date if there are no notifications or media is not playing.</string>
+            <key>footerAlignment</key>  <integer>1</integer>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>conditionallyHideDate</string>
+            <key>label</key>            <string>Conditionally Hide Date</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideDate</string>
+            <key>label</key>            <string>Hide Date</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideChargingText</string>
+            <key>label</key>            <string>Hide Charging Text</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideCameraGrabber</string>
+            <key>label</key>            <string>Hide Camera Grabber</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideZeroButton</string>
+            <key>label</key>            <string>Hide Zero Button</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+	    	<key>cell</key>				<string>PSGroupCell</string>
+			<key>footerText</key>		<string>Push the passcode view down to add space for the date and charging text.</string>
+			<key>footerAlignment</key>	<integer>1</integer>
+		</dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <true/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>pushPasscodeViewDown</string>
+            <key>label</key>            <string>Push Passcode View Down</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+            <key>footerText</key>       <string>Change the distance the passcode view is pushed down.</string>
+            <key>footerAlignment</key>  <integer>1</integer>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSliderCell</string>
+            <key>default</key>          <real>39.5</real>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>passcodeViewPushDownDistance</string>
+            <key>max</key>              <integer>79</integer>
+            <key>min</key>              <integer>0</integer>
+            <key>showValue</key>        <true/>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+            <key>footerText</key>       <string>Change the distance the entry field is from the top of the passcode view.</string>
+            <key>footerAlignment</key>  <integer>1</integer>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideEntryField</string>
+            <key>label</key>            <string>Hide Entry Field</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+		<dict>
+			<key>cell</key>				<string>PSSliderCell</string>
+			<key>default</key>          <real>14.0</real>
+			<key>defaults</key>			<string>com.TweaksByLogan.InstaCode</string>
+			<key>key</key>				<string>entryFieldDistance</string>
+			<key>max</key>				<integer>28</integer>
+			<key>min</key>				<integer>0</integer>
+			<key>showValue</key>		<true/>
+			<key>PostNotification</key>	<string>com.TweaksByLogan.InstaCode/saved</string>
+		</dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+            <key>footerText</key>       <string>Change the alpha of the dimming view added behind the passcode view.</string>
+            <key>footerAlignment</key>  <integer>1</integer>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hidePasscodeViewDarkening</string>
+            <key>label</key>            <string>Hide Passcode View Darkening</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSliderCell</string>
+            <key>default</key>          <real>0.5</real>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>dimViewAlpha</string>
+            <key>max</key>              <integer>1</integer>
+            <key>min</key>              <integer>0</integer>
+            <key>showValue</key>        <true/>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+        </dict>
+
+        <dict>
+            <key>action</key>           <string>respring</string>
+            <key>cell</key>             <string>PSButtonCell</string>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>label</key>            <string>Respring</string>
+        </dict>
+
+        <dict>
+            <key>action</key>           <string>followLogan</string>
+            <key>cell</key>             <string>PSButtonCell</string>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>label</key>            <string>Follow @logandev22 on Twitter</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSGroupCell</string>
+            <key>footerText</key>       <string>© 2015 Logan O'Connell</string>
+            <key>footerAlignment</key>  <integer>1</integer>
+        </dict>
+	</array>
+	<key>title</key>		<string></string>
+</dict>
+</plist>

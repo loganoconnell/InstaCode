@@ -1,0 +1,9 @@
+Package: com.TweaksByLogan.InstaCode
+Name: InstaCode
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Merge the date and passcode view!
+Maintainer: Logan O'Connell
+Author: Logan O'Connell
+Section: Tweaks
