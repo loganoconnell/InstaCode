@@ -40,13 +40,16 @@
 
 	if (enabled) {
 		UILabel *statusTitleView = MSHookIvar<UILabel *>(self, "_statusTitleView");
+		UILabel *statusSubtitleView = MSHookIvar<UILabel *>(self, "_statusSubtitleView");
 
 		if (notificationsOrMedia) {
 			statusTitleView.hidden = NO;
+			statusSubtitleView.hidden = NO;
 		}
 
 		else {
 			statusTitleView.hidden = YES;
+			statusSubtitleView.hidden = YES;
 		}
 	}
 }
@@ -332,7 +335,7 @@
 
 - (void)notificationListBecomingVisible:(BOOL)visible {
 	if (enabled) {
-		if (visible || [self isShowingMediaControls]) {
+		if (visible || [self isShowingMediaControls] || [[%c(SBMediaController) sharedInstance] isPlaying]) {
 			[self movePasscodeViewToLeft];
 		}
 
@@ -368,6 +371,14 @@
 
 - (void)attemptToUnlockUIFromNotification {
 	if (enabled) {
+		[self movePasscodeViewToLeft];
+	}
+
+	%orig;
+}
+
+- (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated completion:(id)completion {
+	if (enabled && visible) {
 		[self movePasscodeViewToLeft];
 	}
 

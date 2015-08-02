@@ -61,7 +61,8 @@
 - (void)notificationListBecomingVisible:(BOOL)visible;
 - (void)_handleDisplayTurnedOn:(id)on;
 - (void)_dismissNotificationCenterToRevealPasscode;
-- (void)attemptToUnlockUIFromNotification;;
+- (void)attemptToUnlockUIFromNotification;
+- (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated completion:(id)completion;
 - (void)passcodeLockViewCancelButtonPressed:(id)pressed;
 - (void)movePasscodeViewToLeft;
 - (void)movePasscodeViewToRight;
