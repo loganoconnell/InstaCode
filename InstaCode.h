@@ -28,6 +28,10 @@
 - (double)_entryFieldBottomYDistanceFromNumberPadTopButton;
 @end
 
+@interface TPRevealingRingView : UIView
+- (void)setDefaultRingStrokeWidth:(float)arg1;
+@end
+
 @interface TPNumberPadButton : UIView
 + (id)imageForCharacter:(unsigned)arg1 highlighted:(BOOL)arg2 whiteVersion:(BOOL)arg3;
 + (UIImage *)modifyImage:(UIImage *)originalImage forNumber:(unsigned)number;
@@ -35,6 +39,10 @@
 
 @interface TPNumberPad : UIView
 - (id)initWithButtons:(NSArray *)buttons;
+@end
+
+@interface SBLockScreenView
+- (void)_layoutSlideToUnlockView;
 @end
 
 @interface SBUIButton : UIView
@@ -63,7 +71,9 @@
 - (void)_dismissNotificationCenterToRevealPasscode;
 - (void)attemptToUnlockUIFromNotification;
 - (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated completion:(id)completion;
+- (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated withUnlockSource:(int)unlockSource andOptions:(id)options;
 - (void)passcodeLockViewCancelButtonPressed:(id)pressed;
+- (void)lockScreenView:(id)view didEndScrollingOnPage:(int)page;
 - (void)movePasscodeViewToLeft;
 - (void)movePasscodeViewToRight;
 @end
@@ -71,6 +81,11 @@
 @interface SBMediaController : NSObject
 + (id)sharedInstance;
 - (BOOL)isPlaying;
+@end
+
+@interface SBDeviceLockController : NSObject
++ (id)sharedController;
+- (BOOL)deviceHasPasscodeSet;
 @end
 
 static BOOL notificationsOrMedia = NO;
@@ -85,6 +100,9 @@ static BOOL hideDate;
 static BOOL hideChargingText;
 static BOOL hideCameraGrabber;
 static BOOL hideZeroButton;
+static BOOL hideButtonText;
+static BOOL hideButtonRing;
+static BOOL hideSlideToUnlockText;
 static BOOL pushPasscodeViewDown;
 static float passcodeViewPushDownDistance;
 static BOOL hideEntryField;
@@ -105,6 +123,9 @@ static void loadPrefs() {
 	hideChargingText = [prefs objectForKey:@"hideChargingText"] ? [[prefs objectForKey:@"hideChargingText"] boolValue] : NO;
 	hideCameraGrabber = [prefs objectForKey:@"hideCameraGrabber"] ? [[prefs objectForKey:@"hideCameraGrabber"] boolValue] : NO;
 	hideZeroButton = [prefs objectForKey:@"hideZeroButton"] ? [[prefs objectForKey:@"hideZeroButton"] boolValue] : NO;
+	hideButtonText = [prefs objectForKey:@"hideButtonText"] ? [[prefs objectForKey:@"hideButtonText"] boolValue] : NO;
+	hideButtonRing = [prefs objectForKey:@"hideButtonRing"] ? [[prefs objectForKey:@"hideButtonRing"] boolValue] : NO;
+	hideSlideToUnlockText = [prefs objectForKey:@"hideSlideToUnlockText"] ? [[prefs objectForKey:@"hideSlideToUnlockText"] boolValue] : NO;
 	pushPasscodeViewDown = [prefs objectForKey:@"pushPasscodeViewDown"] ? [[prefs objectForKey:@"pushPasscodeViewDown"] boolValue] : YES;
 	passcodeViewPushDownDistance = [prefs objectForKey:@"passcodeViewPushDownDistance"] ? [[prefs objectForKey:@"passcodeViewPushDownDistance"] floatValue] : 39.5;
 	hideEntryField = [prefs objectForKey:@"hideEntryField"] ? [[prefs objectForKey:@"hideEntryField"] boolValue] : NO;

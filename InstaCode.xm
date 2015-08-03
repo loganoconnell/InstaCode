@@ -5,14 +5,14 @@
 	%orig;
 
 	if (enabled) {
-		SBUIPasscodeLockViewWithKeypad *view = (SBUIPasscodeLockViewWithKeypad *)MSHookIvar<id <SBUIPasscodeLockView> >(self, "_passcodeView");
+		SBUIPasscodeLockViewWithKeypad *passcodeView = (SBUIPasscodeLockViewWithKeypad *)MSHookIvar<id <SBUIPasscodeLockView> >(self, "_passcodeView");
 
 		if (pushPasscodeViewDown) {
-			view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, pushPasscodeViewDown, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+			passcodeView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, passcodeViewPushDownDistance, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
 		}
 
 		else {
-			view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+			passcodeView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
 		}
 	}
 }
@@ -136,10 +136,28 @@
 }
 %end
 
+%hook TPRevealingRingView
+- (void)setDefaultRingStrokeWidth:(float)arg1 {
+	if (enabled && hideButtonRing) {
+		%orig(0.0);
+	}
+
+	else {
+		%orig;
+	}
+}
+%end
+
 %hook TPNumberPadButton
 + (id)imageForCharacter:(unsigned)arg1 highlighted:(BOOL)arg2 whiteVersion:(BOOL)arg3 {
-	if (enabled && addPasscodeButtons) {
-		return [self modifyImage:%orig forNumber:arg1];
+	if (enabled && (addPasscodeButtons || hideButtonText)) {
+		if (addPasscodeButtons) {
+			return [self modifyImage:%orig forNumber:arg1];
+		}
+		
+		else {
+			return nil;
+		}
 	}
 
 	else {
@@ -215,6 +233,14 @@
 
 	else {
 		return %orig;
+	}
+}
+%end
+
+%hook SBLockScreenView
+- (void)_layoutSlideToUnlockView {
+	if (!(enabled && hideSlideToUnlockText)) {
+		%orig;
 	}
 }
 %end
@@ -349,7 +375,7 @@
 
 - (void)_handleDisplayTurnedOn:(id)on {
 	if (enabled) {
-		if ([self lockScreenIsShowingBulletins] || [self isShowingMediaControls]) {
+		if ([self lockScreenIsShowingBulletins] || [self isShowingMediaControls] || [[%c(SBMediaController) sharedInstance] isPlaying]) {
 			[self movePasscodeViewToLeft];
 		}
 
@@ -385,8 +411,24 @@
 	%orig;
 }
 
+- (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated withUnlockSource:(int)unlockSource andOptions:(id)options {
+	if (enabled && visible) {
+		[self movePasscodeViewToLeft];
+	}
+
+	%orig;
+}
+
 - (void)passcodeLockViewCancelButtonPressed:(id)pressed {
-	if (enabled && !([self lockScreenIsShowingBulletins] || [self isShowingMediaControls])) {
+	if (enabled && !([self lockScreenIsShowingBulletins] || [self isShowingMediaControls] || [[%c(SBMediaController) sharedInstance] isPlaying])) {
+		[self movePasscodeViewToRight];
+	}
+
+	%orig;
+}
+
+- (void)lockScreenView:(id)view didEndScrollingOnPage:(int)page {
+	if (enabled && !([self lockScreenIsShowingBulletins] || [self isShowingMediaControls] || [[%c(SBMediaController) sharedInstance] isPlaying]) && (page == 1)) {
 		[self movePasscodeViewToRight];
 	}
 
@@ -415,7 +457,7 @@
 	SBUIPasscodeLockViewWithKeypad *passcodeView = (SBUIPasscodeLockViewWithKeypad *)MSHookIvar<id <SBUIPasscodeLockView> >([self lockScreenScrollView], "_passcodeView");
 
 	if (pushPasscodeViewDown) {
-		passcodeView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, pushPasscodeViewDown, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+		passcodeView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, passcodeViewPushDownDistance, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
 	}
 
 	else {
@@ -434,4 +476,8 @@
 %ctor {
 	loadPrefs();
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.TweaksByLogan.InstaCode/saved"), NULL, CFNotificationSuspensionBehaviorCoalesce);
+
+	if (![[%c(SBDeviceLockController) sharedController] deviceHasPasscodeSet]) {
+		enabled = NO;
+	}
 }

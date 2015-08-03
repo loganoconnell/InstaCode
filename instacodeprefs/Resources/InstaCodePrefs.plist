@@ -115,12 +115,40 @@
             <key>label</key>            <string>Hide Camera Grabber</string>
             <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
         </dict>
+
         <dict>
             <key>cell</key>             <string>PSSwitchCell</string>
             <key>default</key>          <false/>
             <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
             <key>key</key>              <string>hideZeroButton</string>
             <key>label</key>            <string>Hide Zero Button</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideButtonText</string>
+            <key>label</key>            <string>Hide Button Text</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideButtonRing</string>
+            <key>label</key>            <string>Hide Button Ring</string>
+            <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>             <string>PSSwitchCell</string>
+            <key>default</key>          <false/>
+            <key>defaults</key>         <string>com.TweaksByLogan.InstaCode</string>
+            <key>key</key>              <string>hideSlideToUnlockText</string>
+            <key>label</key>            <string>Hide Slide To Unlock Text</string>
             <key>PostNotification</key> <string>com.TweaksByLogan.InstaCode/saved</string>
         </dict>
 
